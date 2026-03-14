@@ -1,0 +1,251 @@
+/* ============================
+   VARIABLES CSS
+   Colores y tipografías centralizados.
+   Para cambiar el color del sitio, solo editas aquí.
+   ============================ */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-muted: #888888;
+  --color-border: #e8e8e8;
+  --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --space-section: 120px;
+}
+
+/* ============================
+   RESET Y BASE
+   Elimina estilos por defecto del navegador.
+   ============================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* navegación suave al hacer click en links */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================
+   NAVEGACIÓN
+   ============================ */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 60px;
+  position: fixed;       /* queda fija arriba al hacer scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg);
+  z-index: 100;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.nav-links a:hover {
+  opacity: 0.4;
+}
+
+/* ============================
+   HERO
+   Primera sección que ve el usuario.
+   ============================ */
+.hero {
+  padding-top: 180px; /* espacio para que no tape la nav fija */
+  padding-bottom: var(--space-section);
+  padding-left: 60px;
+  padding-right: 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-label {
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: clamp(72px, 12vw, 160px); /* tamaño flexible según pantalla */
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.hero-artist {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.hero-phrase {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  font-style: italic;
+  max-width: 400px;
+}
+
+/* ============================
+   TÍTULOS DE SECCIÓN
+   ============================ */
+.section-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+}
+
+/* ============================
+   GALERÍA DE OBRAS
+   CSS Grid crea el layout en columnas automáticamente.
+   ============================ */
+.gallery-section {
+  padding: var(--space-section) 60px;
+  border-top: 1px solid var(--color-border);
+}
+
+.gallery-grid {
+  display: grid;
+  /* auto-fill: crea tantas columnas como quepan
+     minmax(300px, 1fr): cada columna mínimo 300px, máximo igualadas */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 48px;
+}
+
+/* Cada tarjeta de obra */
+.artwork-card {
+  cursor: pointer;
+}
+
+.artwork-image-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* proporción vertical, típica de cuadros */
+  overflow: hidden;
+  background-color: var(--color-border); /* placeholder gris si no hay imagen */
+  margin-bottom: 16px;
+}
+
+.artwork-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* la imagen llena el espacio sin deformarse */
+  transition: transform 0.4s ease;
+}
+
+.artwork-card:hover .artwork-image-wrapper img {
+  transform: scale(1.03); /* zoom suave al pasar el mouse */
+}
+
+.artwork-name {
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.artwork-description {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* ============================
+   SECCIÓN SOBRE EL ARTISTA
+   ============================ */
+.about-section {
+  padding: var(--space-section) 60px;
+  border-top: 1px solid var(--color-border);
+}
+
+.about-content {
+  max-width: 640px; /* limita el ancho para mejor lectura */
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333333;
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.footer {
+  padding: 40px 60px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ============================
+   RESPONSIVE — MOBILE
+   Se aplica cuando la pantalla es menor a 768px.
+   ============================ */
+@media (max-width: 768px) {
+  .nav {
+    padding: 24px 24px;
+  }
+
+  .nav-links {
+    gap: 24px;
+  }
+
+  .hero {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 140px;
+  }
+
+  .gallery-section,
+  .about-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+  }
+
+  .footer {
+    padding: 32px 24px;
+  }
+}
