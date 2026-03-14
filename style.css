@@ -205,6 +205,55 @@ body {
 }
 
 /* ============================
+   SECCIÓN CONTACTO
+   ============================ */
+.contact-section {
+  padding: var(--space-section) 60px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Fila con los tres bloques de info */
+.contact-grid {
+  display: flex;
+  gap: 80px;
+  margin-bottom: 60px;
+  flex-wrap: wrap; /* se apilan en mobile */
+}
+
+.contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Etiqueta: EMAIL, ESTUDIO, INSTAGRAM */
+.contact-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Valor de contacto */
+.contact-value {
+  font-size: 17px;
+  color: var(--color-text);
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.contact-value:hover {
+  opacity: 0.5;
+}
+
+/* Contenedor del mapa */
+.contact-map {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+/* ============================
    FOOTER
    ============================ */
 .footer {
@@ -235,9 +284,14 @@ body {
   }
 
   .gallery-section,
-  .about-section {
+  .about-section,
+  .contact-section {
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  .contact-grid {
+    gap: 40px;
   }
 
   .gallery-grid {
