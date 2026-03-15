@@ -685,14 +685,18 @@ body {
 @media (max-width: 768px) {
 
   /* --- NAVBAR ---
-     Oculta el nombre del artista para que no desborde.
-     Reduce padding y gap entre links. */
+     Oculta logo y nombre del artista. Centra los links. */
   .nav {
     padding: 20px 24px;
+    justify-content: center;
+  }
+
+  .nav-logo {
+    display: none;
   }
 
   .nav-links {
-    gap: 16px;
+    gap: 24px;
   }
 
   .nav-artist {
