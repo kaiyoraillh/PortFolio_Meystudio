@@ -12,6 +12,7 @@ const NAV_HTML = `
       <li><a href="/about.html" data-page="about.html">Sobre mi</a></li>
       <li><a href="/contact.html" data-page="contact.html">Contacto</a></li>
     </ul>
+    <button class="dark-mode-btn" id="dark-mode-btn" aria-label="Alternar modo oscuro">🌙</button>
   </nav>
 `;
 
@@ -52,7 +53,40 @@ function highlightActiveLink() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', injectComponents);
+document.addEventListener('DOMContentLoaded', () => {
+  injectComponents();
+  initDarkMode();
+});
+
+// ============================
+// DARK MODE
+// Activa/desactiva la clase .dark-mode en el body.
+// Guarda la preferencia en localStorage.
+// ============================
+function initDarkMode() {
+  // Aplica la preferencia guardada antes de que la página se pinte
+  if (localStorage.getItem('darkMode') === 'on') {
+    document.body.classList.add('dark-mode');
+  }
+
+  const btn = document.getElementById('dark-mode-btn');
+  if (!btn) return;
+
+  // Actualiza el ícono según el estado actual
+  updateIcon(btn);
+
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', isDark ? 'on' : 'off');
+    updateIcon(btn);
+  });
+}
+
+function updateIcon(btn) {
+  const isDark = document.body.classList.contains('dark-mode');
+  btn.textContent = isDark ? '☀️' : '🌙';
+}
 
 // ============================
 // ANIMACIÓN DEL NAVBAR AL HACER SCROLL

@@ -8,8 +8,44 @@
   --color-text: #000000;
   --color-text-muted: #888888;
   --color-border: #e8e8e8;
+  --color-input-bg: #f5f5f5;
   --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --space-section: 120px;
+}
+
+/* MODO OSCURO: sobreescribe las variables cuando el body tiene .dark-mode */
+body.dark-mode {
+  --color-bg: #0f0f0f;
+  --color-text: #ebebeb;
+  --color-text-muted: #666666;
+  --color-border: #2a2a2a;
+  --color-input-bg: #1a1a1a;
+}
+
+/* Textos con color hardcodeado que también deben cambiar */
+body.dark-mode .about-text {
+  color: #cccccc;
+}
+
+/* Nav translúcido en dark mode */
+body.dark-mode .nav--scrolled {
+  background-color: rgba(15, 15, 15, 0.85);
+}
+
+/* Botón dark mode en el nav */
+.dark-mode-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px;
+  transition: opacity 0.2s;
+  margin-left: 16px;
+}
+
+.dark-mode-btn:hover {
+  opacity: 0.5;
 }
 
 /* ============================
@@ -570,7 +606,7 @@ body {
 /* Input de email: caja clara con borde visible */
 .newsletter-input {
   flex: 1; /* ocupa todo el espacio disponible */
-  background: #f5f5f5;
+  background: var(--color-input-bg);
   border: 1px solid var(--color-text);
   border-right: none; /* el botón toca el input sin doble borde */
   padding: 14px 20px;
