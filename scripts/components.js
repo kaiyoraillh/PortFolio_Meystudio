@@ -8,7 +8,7 @@ const NAV_HTML = `
   <nav class="nav">
     <a href="/index.html" class="nav-logo">MEYSTUDIO</a>
     <ul class="nav-links">
-      <li><a href="/obras.html" data-page="obras.html">Obras</a></li>
+      <li><a href="/obras.html" data-page="obras.html">Portfolio</a></li>
       <li><a href="/about.html" data-page="about.html">Sobre mi</a></li>
       <li><a href="/contact.html" data-page="contact.html">Contacto</a></li>
     </ul>
