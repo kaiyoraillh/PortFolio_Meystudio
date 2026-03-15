@@ -57,6 +57,12 @@ body {
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.nav-logo:hover {
+  opacity: 0.4;
 }
 
 .nav-links {
@@ -76,6 +82,16 @@ body {
 
 .nav-links a:hover {
   opacity: 0.4;
+}
+
+/* Link activo: página en la que estás actualmente */
+.nav-links a.active {
+  opacity: 0.4;
+}
+
+/* Espaciado superior para páginas internas (compensa el nav fijo) */
+.page-content {
+  padding-top: calc(var(--space-section) + 80px);
 }
 
 /* ============================
