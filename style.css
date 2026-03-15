@@ -173,6 +173,21 @@ body {
   margin-bottom: 32px;
 }
 
+/* Cada letra del título animada individualmente */
+.hero-title .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: letterReveal 0.4s ease forwards;
+}
+
+@keyframes letterReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-artist {
   font-size: clamp(18px, 2.5vw, 28px);
   font-weight: 300;
@@ -188,36 +203,76 @@ body {
 }
 
 /* ============================
-   VIDEO HERO
-   Video vertical centrado debajo del título.
+   HERO — DOS COLUMNAS
+   Video a la izquierda, texto a la derecha.
    ============================ */
-.hero-video-wrapper {
-  /* Centra el video horizontalmente dentro del hero */
+.hero-columns {
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 80px;
   margin-top: 60px;
 }
 
-.hero-video {
-  width: 320px;           /* ancho fijo: portrait elegante */
-  aspect-ratio: 9 / 16;  /* proporción vertical estándar  */
-  object-fit: cover;
-  border-radius: 4px;     /* bordes sutilmente redondeados */
-  display: block;
+/* Columna izquierda: video */
+.hero-col-video {
+  flex-shrink: 0;
+}
 
-  /* Transición para el efecto hover */
+.hero-video {
+  width: 280px;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 4px;
+  display: block;
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* Efecto al pasar el mouse: leve zoom + ligero aumento de brillo */
 .hero-video:hover {
   transform: scale(1.03);
   filter: brightness(1.08);
 }
 
+/* Columna derecha: texto */
+.hero-col-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Cada línea de texto: grande y animada */
+.hero-info {
+  font-size: clamp(22px, 3vw, 42px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateX(20px);
+  animation: heroTextReveal 0.6s ease forwards;
+}
+
+/* Delays escalonados para que aparezcan una tras otra */
+.hero-info--1 { animation-delay: 0.5s; }
+.hero-info--2 { animation-delay: 0.7s; }
+.hero-info--3 { animation-delay: 0.9s; }
+
+@keyframes heroTextReveal {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile: columnas se apilan */
 @media (max-width: 768px) {
+  .hero-columns {
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
   .hero-video {
-    width: 80vw; /* en mobile ocupa el 80% del ancho de pantalla */
+    width: 75vw;
   }
 }
 
