@@ -164,7 +164,7 @@ body {
 }
 
 .hero-title {
-  font-size: clamp(72px, 12vw, 160px); /* tamaño flexible según pantalla */
+  font-size: clamp(100px, 18vw, 220px); /* tamaño flexible según pantalla */
   font-weight: 700;
   line-height: 0.9;
   letter-spacing: -0.03em;
