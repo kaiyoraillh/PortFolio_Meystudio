@@ -20,6 +20,7 @@
   color: var(--color-text);
   text-transform: uppercase;
   white-space: nowrap;
+  margin-left: auto; /* empuja el nombre a la derecha */
 }
 
 /* ============================
@@ -50,8 +51,9 @@ body {
    ============================ */
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 40px;
   padding: 32px 60px;
   position: fixed;
   top: 0;
@@ -89,9 +91,9 @@ body {
 }
 
 .nav-logo {
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-text);
