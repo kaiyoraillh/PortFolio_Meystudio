@@ -50,6 +50,16 @@ body {
   background-color: var(--color-bg);
   z-index: 100;
   border-bottom: 1px solid var(--color-border);
+
+  /* Transición suave para todos los cambios del navbar */
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado al hacer scroll: padding reducido y sombra sutil */
+.nav--scrolled {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
 }
 
 .nav-logo {

@@ -53,3 +53,18 @@ function highlightActiveLink() {
 }
 
 document.addEventListener('DOMContentLoaded', injectComponents);
+
+// ============================
+// ANIMACIÓN DEL NAVBAR AL HACER SCROLL
+// Agrega la clase .nav--scrolled cuando el usuario baja de la página.
+// ============================
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (!nav) return;
+
+  if (window.scrollY > 40) {
+    nav.classList.add('nav--scrolled');
+  } else {
+    nav.classList.remove('nav--scrolled');
+  }
+});
