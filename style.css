@@ -280,6 +280,107 @@ body {
 }
 
 /* ============================
+   FORMULARIO DE CONTACTO
+   ============================ */
+.form-section {
+  padding: var(--space-section) 60px;
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-form {
+  max-width: 560px; /* ancho cómodo para leer y escribir */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.form-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 10px 0;
+  font-family: var(--font-main);
+  font-size: 17px;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--color-text); /* línea se vuelve negra al enfocar */
+}
+
+.form-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* El textarea tiene altura fija y sin resize horizontal */
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Botón enviar: estilo minimalista acorde al sitio */
+.form-button {
+  align-self: flex-start; /* no ocupa todo el ancho */
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  padding: 14px 40px;
+  font-family: var(--font-main);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.form-button:hover {
+  opacity: 0.7;
+}
+
+.form-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Mensaje de estado: éxito o error */
+.form-status {
+  font-size: 14px;
+  min-height: 20px; /* evita saltos de layout */
+}
+
+.form-status--success {
+  color: #2a7a2a;
+}
+
+.form-status--error {
+  color: #cc0000;
+}
+
+/* Responsive: reduce padding en mobile */
+@media (max-width: 768px) {
+  .form-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* ============================
    PÁGINAS INTERNAS
    Compensa el nav fijo para que el título no quede cortado.
    Esta regla va al final para ganar sobre los padding de cada sección.
