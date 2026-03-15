@@ -89,11 +89,6 @@ body {
   opacity: 0.4;
 }
 
-/* Espaciado superior para páginas internas (compensa el nav fijo) */
-.page-content {
-  padding-top: calc(var(--space-section) + 80px);
-}
-
 /* ============================
    HERO
    Primera sección que ve el usuario.
@@ -267,6 +262,15 @@ body {
   width: 100%;
   overflow: hidden;
   border: 1px solid var(--color-border);
+}
+
+/* ============================
+   PÁGINAS INTERNAS
+   Compensa el nav fijo para que el título no quede cortado.
+   Esta regla va al final para ganar sobre los padding de cada sección.
+   ============================ */
+.page-content {
+  padding-top: calc(var(--space-section) + 80px);
 }
 
 /* ============================
