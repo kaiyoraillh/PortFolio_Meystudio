@@ -5,44 +5,90 @@
 // ============================
 const artworks = [
   {
-    name: "Sin título I",
+    name: "Yeahman",
     image: "Assets/images/YEAHMAN 2.jpg",
     year: "2024",
-    description: "Óleo sobre tela"
+    description: "Técnica mixta"
   },
   {
-    name: "Sin título II",
+    name: "Si",
     image: "Assets/images/SI 2.jpg",
     year: "2024",
-    description: "Acrílico sobre tela"
+    description: "Técnica mixta"
   },
   {
-    name: "Sin título III",
-    image: "Assets/images/TAPA26.jpg",
+    name: "Quixote",
+    image: "Assets/images/quixote 2.jpg",
+    year: "2024",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Halcones",
+    image: "Assets/images/HALCONES 2.jpg",
     year: "2023",
     description: "Técnica mixta"
   },
   {
-    name: "Sin título IV",
-    image: "Assets/images/BITACORAS 2.jpg",
+    name: "Follow",
+    image: "Assets/images/FOLLOW 2.jpg",
     year: "2023",
-    description: "Óleo sobre madera"
+    description: "Técnica mixta"
   },
   {
-    name: "Sin título V",
-    image: "Assets/images/AD ANTES 2.jpg",
+    name: "El Out",
+    image: "Assets/images/EL OUT 2.jpg",
     year: "2023",
-    description: "Acuarela"
+    description: "Técnica mixta"
+  },
+  {
+    name: "Distant",
+    image: "Assets/images/DISTANT 2.jpg",
+    year: "2023",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Captcha",
+    image: "Assets/images/CAPTCHA 2.jpg",
+    year: "2023",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Cabecera",
+    image: "Assets/images/CABECERA  2.jpg",
+    year: "2022",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Bitácoras",
+    image: "Assets/images/BITACORAS 2.jpg",
+    year: "2022",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Anis",
+    image: "Assets/images/ANIS 2.jpg",
+    year: "2022",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Mar Propio",
+    image: "Assets/images/MAR PROPIO 2.jpg",
+    year: "2022",
+    description: "Técnica mixta"
+  },
+  {
+    name: "Ad Antes",
+    image: "Assets/images/AD ANTES 2.jpg",
+    year: "2022",
+    description: "Técnica mixta"
   }
 ];
 
 // ============================
 // FUNCIÓN: CREAR BLOQUE DE OBRA
 // Genera el HTML de una sola obra: texto a la izquierda, imagen a la derecha.
-// El número de índice se usa para el contador visual (01, 02...).
 // ============================
 function createArtworkItem(artwork, index) {
-  // Número formateado: 1 → "01", 2 → "02", etc.
   const number = String(index + 1).padStart(2, '0');
 
   return `
@@ -74,7 +120,6 @@ function createArtworkItem(artwork, index) {
 
 // ============================
 // FUNCIÓN: RENDERIZAR GALERÍA
-// Inserta todas las obras en el contenedor del HTML.
 // ============================
 function renderGallery() {
   const galleryGrid = document.getElementById('gallery-grid');
@@ -82,15 +127,13 @@ function renderGallery() {
 
   galleryGrid.innerHTML = artworks.map(createArtworkItem).join('');
 
-  // Activa las animaciones de scroll y el lightbox
   initScrollAnimations();
   initLightbox();
 }
 
 // ============================
 // ANIMACIÓN DE SCROLL
-// Usa IntersectionObserver: cuando una obra entra en pantalla,
-// le agrega la clase .visible que dispara la transición CSS.
+// Cuando una obra entra en pantalla, le agrega .visible → transición CSS.
 // ============================
 function initScrollAnimations() {
   const items = document.querySelectorAll('.artwork-item');
@@ -99,12 +142,11 @@ function initScrollAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Una vez visible no necesitamos seguir observándola
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15 // se activa cuando el 15% del elemento es visible
+    threshold: 0.15
   });
 
   items.forEach(item => observer.observe(item));
@@ -112,42 +154,38 @@ function initScrollAnimations() {
 
 // ============================
 // LIGHTBOX
-// Al hacer click en una imagen, se muestra ampliada centrada en pantalla.
-// Se cierra con el botón X o haciendo click fuera de la imagen.
+// Click en imagen → se muestra ampliada.
+// Cierre: botón X, click fuera, o tecla Escape.
 // ============================
 function initLightbox() {
-  const lightbox   = document.getElementById('lightbox');
+  const lightbox    = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn   = document.querySelector('.lightbox-close');
+  const closeBtn    = document.querySelector('.lightbox-close');
 
   if (!lightbox) return;
 
-  // Abrir lightbox al hacer click en cualquier imagen de obra
   document.querySelectorAll('.artwork-img').forEach(img => {
     img.addEventListener('click', () => {
       lightboxImg.src = img.getAttribute('data-src');
       lightboxImg.alt = img.getAttribute('data-alt');
       lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden'; // evita scroll mientras está abierto
+      document.body.style.overflow = 'hidden';
     });
   });
 
-  // Cerrar con el botón X
   closeBtn.addEventListener('click', closeLightbox);
 
-  // Cerrar al hacer click en el fondo oscuro (fuera de la imagen)
   lightbox.addEventListener('click', (e) => {
     if (e.target === lightbox) closeLightbox();
   });
 
-  // Cerrar con la tecla Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
   });
 
   function closeLightbox() {
     lightbox.classList.remove('open');
-    document.body.style.overflow = ''; // restaura el scroll
+    document.body.style.overflow = '';
   }
 }
 
