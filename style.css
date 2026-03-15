@@ -276,6 +276,27 @@ body {
   color: var(--color-text-muted);
 }
 
+.artwork-dimensions {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+/* Doble bloque de información: dos columnas lado a lado */
+.artwork-info-double {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* En mobile los dos bloques se apilan verticalmente */
+@media (max-width: 768px) {
+  .artwork-info-double {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
 /* LADO DERECHO: imagen */
 .artwork-visual {
   display: flex;
