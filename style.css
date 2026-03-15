@@ -20,7 +20,24 @@
   color: var(--color-text);
   text-transform: uppercase;
   white-space: nowrap;
-  margin-left: auto; /* empuja el nombre a la derecha */
+  margin-left: auto;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-artist::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: width 0.3s ease;
+}
+
+.nav-artist:hover::after {
+  width: 100%;
 }
 
 /* ============================
@@ -97,10 +114,23 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-text);
+  position: relative;
+  padding-bottom: 2px;
 }
 
-.nav-logo:hover {
-  opacity: 0.4;
+.nav-logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: width 0.3s ease;
+}
+
+.nav-logo:hover::after {
+  width: 100%;
 }
 
 .nav-links {
