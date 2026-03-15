@@ -414,7 +414,7 @@ body {
 /* Columna izquierda: foto */
 .about-image-col {
   position: sticky;
-  top: 120px; /* se queda fija mientras scrolleás el texto */
+  top: 88px; /* se queda fija mientras scrolleás el texto */
 }
 
 .about-photo {
