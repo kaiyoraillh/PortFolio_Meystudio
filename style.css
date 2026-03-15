@@ -43,7 +43,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 32px 60px;
-  position: fixed;       /* queda fija arriba al hacer scroll */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -51,15 +51,31 @@ body {
   z-index: 100;
   border-bottom: 1px solid var(--color-border);
 
-  /* Transición suave para todos los cambios del navbar */
-  transition: padding 0.3s ease, box-shadow 0.3s ease;
+  /* El navbar aparece desde arriba con un fade al cargar la página */
+  animation: navReveal 0.8s ease forwards;
+  transition: padding 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
 }
 
-/* Estado al hacer scroll: padding reducido y sombra sutil */
+/* Al cargar: el nav baja suavemente desde arriba */
+@keyframes navReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Al hacer scroll: el fondo se vuelve ligeramente translúcido con blur */
 .nav--scrolled {
-  padding-top: 18px;
-  padding-bottom: 18px;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-color: transparent;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .nav-logo {
