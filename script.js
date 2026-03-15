@@ -11,107 +11,106 @@ const artworks = [
   {
     name: "Yeah Manja",
     image: "Assets/images/YEAHMAN 2.jpg",
-    year: "2019",
-    dimensions: "—",
+    year: "2013",
+    dimensions: "220x80",
     description: "Acrylic, ink, laquer and spray paint on wood"
   },
   {
     name: "Si/som dos",
     image: "Assets/images/SI 2.jpg",
     year: "2013",
-    dimensions: "—",
+    dimensions: "220x160",
     description: "Acrylic, ink, laquer, resin and spray paint on wood"
   },
   {
     // OBRA #3 — doble bloque de información
     name: "Quixote",
     image: "Assets/images/quixote 2.jpg",
-    year: "2024",
-    dimensions: "—",
-    description: "Técnica mixta",
+    year: "2020",
+    dimensions: "170x80",
+    description: "Acrilico, carbonilla, aerosol, marcadores y acuarela sobre papel troquelado",
     extraInfo: {
-      name: "Quixote",
-      year: "2024",
-      dimensions: "—",
-      description: "Técnica mixta"
+      name: "Sanxo",
+      dimensions: "120x80",
+      description: "Acrilico, carbonilla, aerosol, marcadores y acuarela sobre papel troquelado"
     }
   },
   {
-    name: "Halcones",
+    name: "Halcones y Palomas",
     image: "Assets/images/HALCONES 2.jpg",
-    year: "2023",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2016",
+    dimensions: "150x150",
+    description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "Follow",
     image: "Assets/images/FOLLOW 2.jpg",
-    year: "2023",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2016",
+    dimensions: "220x160",
+    description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "El Out",
     image: "Assets/images/EL OUT 2.jpg",
-    year: "2023",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2020",
+    dimensions: "175x75",
+    description: "/Periodo de cuarentena/ Acrylic, ink, laquer, resin plaster and spray paint on wood panel"
   },
   {
     name: "Distant",
     image: "Assets/images/DISTANT 2.jpg",
-    year: "2023",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2019",
+    dimensions: "140x110",
+    description: "Acrylic, ink, laquer, plaster and spray paint on cement place"
   },
   {
-    name: "Captcha",
+    name: "Serie Captcha",
     image: "Assets/images/CAPTCHA 2.jpg",
-    year: "2023",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "04.A0",
+    dimensions: "120x150",
+    description: "Acrylic, ink and spray paint on wood"
   },
   {
     name: "Cabecera",
     image: "Assets/images/CABECERA  2.jpg",
     year: "2022",
-    dimensions: "—",
-    description: "Técnica mixta"
+    dimensions: "300x120",
+    description: "Acrilico, carbonilla, aerosol. Marcadores, enduido sobre 14 lienzos unidos"
   },
   {
     // OBRA #10 — doble bloque de información
-    name: "Bitácoras",
+    name: "R12/El Muelle",
     image: "Assets/images/BITACORAS 2.jpg",
-    year: "2022",
-    dimensions: "—",
-    description: "Técnica mixta",
+    year: "2024-25",
+    dimensions: "90x60",
+    description: "Acrilico, lapiz negro, aerosol, marcadores, acuarela y laca sobre papel",
     extraInfo: {
-      name: "Bitácoras",
-      year: "2022",
-      dimensions: "—",
-      description: "Técnica mixta"
+      name: "Mini/Newquay",
+      year: "2024-25",
+      dimensions: "90x60",
+      description: "Acrilico, lapiz negro, aerosol, marcadores, acuarela y laca sobre papel"
     }
   },
   {
     name: "Anis",
     image: "Assets/images/ANIS 2.jpg",
-    year: "2022",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2016",
+    dimensions: "120x150",
+    description: "Acrylic, ink, laquer and spray paint on wood"
   },
   {
     name: "Mar Propio",
     image: "Assets/images/MAR PROPIO 2.jpg",
-    year: "2022",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2016",
+    dimensions: "220x160",
+    description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "Ad Antes",
     image: "Assets/images/AD ANTES 2.jpg",
-    year: "2022",
-    dimensions: "—",
-    description: "Técnica mixta"
+    year: "2019",
+    dimensions: "110x85",
+    description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   }
 ];
 
@@ -124,10 +123,10 @@ function createInfoBlock(data, number = null) {
   return `
     <div class="artwork-info">
       ${number !== null ? `<span class="artwork-number">${number}</span>` : ''}
-      <h3 class="artwork-name">${data.name}</h3>
-      <p class="artwork-year">${data.year}</p>
-      <p class="artwork-dimensions">${data.dimensions}</p>
-      <p class="artwork-meta">${data.description}</p>
+      <h3 class="artwork-name">${data.name || ''}</h3>
+      ${data.year        ? `<p class="artwork-year">${data.year}</p>` : ''}
+      ${data.dimensions  ? `<p class="artwork-dimensions">${data.dimensions}</p>` : ''}
+      ${data.description ? `<p class="artwork-meta">${data.description}</p>` : ''}
     </div>
   `;
 }
