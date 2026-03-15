@@ -135,6 +135,40 @@ body {
 }
 
 /* ============================
+   VIDEO HERO
+   Video vertical centrado debajo del título.
+   ============================ */
+.hero-video-wrapper {
+  /* Centra el video horizontalmente dentro del hero */
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.hero-video {
+  width: 320px;           /* ancho fijo: portrait elegante */
+  aspect-ratio: 9 / 16;  /* proporción vertical estándar  */
+  object-fit: cover;
+  border-radius: 4px;     /* bordes sutilmente redondeados */
+  display: block;
+
+  /* Transición para el efecto hover */
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Efecto al pasar el mouse: leve zoom + ligero aumento de brillo */
+.hero-video:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 768px) {
+  .hero-video {
+    width: 80vw; /* en mobile ocupa el 80% del ancho de pantalla */
+  }
+}
+
+/* ============================
    TÍTULO PRINCIPAL DE PÁGINA
    Mismo estilo que .hero-title ("HOLA!").
    Se usa en los h2 de Portfolio, Sobre mí y Contacto.
