@@ -403,8 +403,29 @@ body {
   border-top: 1px solid var(--color-border);
 }
 
+/* Dos columnas: imagen | texto */
+.about-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Columna izquierda: foto */
+.about-image-col {
+  position: sticky;
+  top: 120px; /* se queda fija mientras scrolleás el texto */
+}
+
+.about-photo {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Columna derecha: texto */
 .about-content {
-  max-width: 640px; /* limita el ancho para mejor lectura */
+  max-width: 600px;
 }
 
 .about-text {
@@ -412,6 +433,22 @@ body {
   line-height: 1.8;
   color: #333333;
   margin-bottom: 1em;
+}
+
+/* Responsive: en mobile la foto va arriba del texto */
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image-col {
+    position: static; /* desactiva el sticky en mobile */
+  }
+
+  .about-photo {
+    max-width: 260px; /* no ocupa todo el ancho en mobile */
+  }
 }
 
 /* ============================
