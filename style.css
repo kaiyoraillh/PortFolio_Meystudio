@@ -478,11 +478,12 @@ body {
   }
 
   .about-image-col {
-    position: static; /* desactiva el sticky en mobile */
+    position: static;
   }
 
   .about-photo {
-    max-width: 260px; /* no ocupa todo el ancho en mobile */
+    max-width: 260px;
+    margin-left: 0; /* alineada a la izquierda en mobile */
   }
 }
 

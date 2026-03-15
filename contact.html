@@ -51,8 +51,22 @@
     </div>
   </section>
 
+  <!-- SUSCRIPCIÓN MEYZINE -->
+  <section class="form-section">
+    <h2 class="meyzine-title">MEYZINE</h2>
+    <p class="meyzine-subtitle">DEJA TU EMAIL Y QUIZÁ RECIBAS UN MEYZINE</p>
+    <form id="contact-form" class="contact-form" novalidate>
+      <div class="newsletter-row">
+        <input type="email" id="email" name="email" class="newsletter-input" placeholder="tu@email.com" required />
+        <button type="submit" class="form-button">Enviar</button>
+      </div>
+      <p id="form-status" class="form-status" aria-live="polite"></p>
+    </form>
+  </section>
+
   <div id="footer-container"></div>
 
   <script src="scripts/components.js"></script>
+  <script src="scripts/contact-form.js"></script>
 </body>
 </html>
