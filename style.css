@@ -209,8 +209,9 @@ body {
 }
 
 /* ============================
-   GALERÍA DE OBRAS
-   CSS Grid crea el layout en columnas automáticamente.
+   GALERÍA DE OBRAS — LAYOUT FULLSCREEN
+   Cada obra ocupa el alto de la pantalla.
+   Texto a la izquierda, imagen a la derecha.
    ============================ */
 .gallery-section {
   padding: 40px 60px;
@@ -218,47 +219,158 @@ body {
 }
 
 .gallery-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Bloque de una obra: ocupa toda la altura de la pantalla */
+.artwork-item {
+  min-height: 100vh;
   display: grid;
-  /* auto-fill: crea tantas columnas como quepan
-     minmax(300px, 1fr): cada columna mínimo 300px, máximo igualadas */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 48px;
+  grid-template-columns: 1fr 1fr; /* texto | imagen, mitad y mitad */
+  align-items: center;
+  gap: 80px;
+  border-bottom: 1px solid var(--color-border);
+  padding: 80px 0;
+
+  /* Estado inicial para la animación de scroll: invisible y desplazado */
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* Cada tarjeta de obra */
-.artwork-card {
-  cursor: pointer;
+/* Cuando el IntersectionObserver detecta que es visible, activa la animación */
+.artwork-item.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.artwork-image-wrapper {
-  width: 100%;
-  aspect-ratio: 4 / 5; /* proporción vertical, típica de cuadros */
-  overflow: hidden;
-  background-color: var(--color-border); /* placeholder gris si no hay imagen */
-  margin-bottom: 16px;
+/* LADO IZQUIERDO: información */
+.artwork-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.artwork-image-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* la imagen llena el espacio sin deformarse */
-  transition: transform 0.4s ease;
-}
-
-.artwork-card:hover .artwork-image-wrapper img {
-  transform: scale(1.03); /* zoom suave al pasar el mouse */
+.artwork-number {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
 }
 
 .artwork-name {
-  font-size: 17px;
-  font-weight: 500;
-  margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.artwork-description {
-  font-size: 14px;
+.artwork-meta {
+  font-size: 15px;
   color: var(--color-text-muted);
-  line-height: 1.5;
+}
+
+.artwork-year {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+/* LADO DERECHO: imagen */
+.artwork-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artwork-img {
+  max-height: 70vh;    /* no supera el 70% del alto de pantalla */
+  max-width: 100%;
+  width: auto;
+  object-fit: contain; /* respeta la proporción original */
+  cursor: zoom-in;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  display: block;
+}
+
+.artwork-img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* ============================
+   LIGHTBOX
+   Overlay oscuro que muestra la imagen ampliada.
+   ============================ */
+.lightbox {
+  /* Oculto por defecto */
+  display: none;
+  position: fixed;
+  inset: 0; /* cubre toda la pantalla */
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Se muestra cuando JS le agrega la clase .open */
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox-img {
+  max-height: 90vh;
+  max-width: 90vw;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 36px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+/* ============================
+   RESPONSIVE — obras en mobile
+   ============================ */
+@media (max-width: 768px) {
+  .gallery-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* En mobile: imagen arriba, texto abajo */
+  .artwork-item {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    min-height: auto;
+    padding: 60px 0;
+    gap: 32px;
+  }
+
+  .artwork-visual {
+    order: -1; /* imagen primero */
+  }
+
+  .artwork-img {
+    max-height: 60vw;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 /* ============================

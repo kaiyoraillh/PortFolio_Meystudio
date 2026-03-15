@@ -1,78 +1,157 @@
 // ============================
 // ARRAY DE OBRAS
-// Aquí defines todas las obras del artista.
 // Para agregar una obra nueva, copiás un bloque { } y lo pegás.
+// Las imágenes van en Assets/images/
 // ============================
 const artworks = [
   {
     name: "Sin título I",
-    image: "assets/images/obra-01.jpg",
-    description: "Óleo sobre tela, 2024"
+    image: "Assets/images/YEAHMAN 2.jpg",
+    year: "2024",
+    description: "Óleo sobre tela"
   },
   {
     name: "Sin título II",
-    image: "assets/images/obra-02.jpg",
-    description: "Acrílico sobre tela, 2024"
+    image: "Assets/images/SI 2.jpg",
+    year: "2024",
+    description: "Acrílico sobre tela"
   },
   {
     name: "Sin título III",
-    image: "assets/images/obra-03.jpg",
-    description: "Técnica mixta, 2023"
+    image: "Assets/images/TAPA26.jpg",
+    year: "2023",
+    description: "Técnica mixta"
   },
   {
     name: "Sin título IV",
-    image: "assets/images/obra-04.jpg",
-    description: "Óleo sobre madera, 2023"
+    image: "Assets/images/BITACORAS 2.jpg",
+    year: "2023",
+    description: "Óleo sobre madera"
   },
   {
     name: "Sin título V",
-    image: "assets/images/obra-05.jpg",
-    description: "Acuarela, 2023"
-  },
-  {
-    name: "Sin título VI",
-    image: "assets/images/obra-06.jpg",
-    description: "Grafito sobre papel, 2022"
+    image: "Assets/images/AD ANTES 2.jpg",
+    year: "2023",
+    description: "Acuarela"
   }
 ];
 
 // ============================
-// FUNCIÓN: CREAR TARJETA DE OBRA
-// Recibe un objeto del array y devuelve HTML en texto.
+// FUNCIÓN: CREAR BLOQUE DE OBRA
+// Genera el HTML de una sola obra: texto a la izquierda, imagen a la derecha.
+// El número de índice se usa para el contador visual (01, 02...).
 // ============================
-function createArtworkCard(artwork) {
+function createArtworkItem(artwork, index) {
+  // Número formateado: 1 → "01", 2 → "02", etc.
+  const number = String(index + 1).padStart(2, '0');
+
   return `
-    <article class="artwork-card">
-      <div class="artwork-image-wrapper">
-        <img src="${artwork.image}" alt="${artwork.name}" loading="lazy" />
+    <article class="artwork-item">
+
+      <!-- LADO IZQUIERDO: información de la obra -->
+      <div class="artwork-info">
+        <span class="artwork-number">${number}</span>
+        <h3 class="artwork-name">${artwork.name}</h3>
+        <p class="artwork-meta">${artwork.description}</p>
+        <p class="artwork-year">${artwork.year}</p>
       </div>
-      <p class="artwork-name">${artwork.name}</p>
-      ${artwork.description ? `<p class="artwork-description">${artwork.description}</p>` : ''}
+
+      <!-- LADO DERECHO: imagen clickeable -->
+      <div class="artwork-visual">
+        <img
+          src="${artwork.image}"
+          alt="${artwork.name}"
+          class="artwork-img"
+          loading="lazy"
+          data-src="${artwork.image}"
+          data-alt="${artwork.name}"
+        />
+      </div>
+
     </article>
   `;
 }
 
 // ============================
 // FUNCIÓN: RENDERIZAR GALERÍA
-// Toma el array artworks, genera todas las tarjetas
-// y las inserta dentro del div#gallery-grid del HTML.
+// Inserta todas las obras en el contenedor del HTML.
 // ============================
 function renderGallery() {
-  // Buscamos el contenedor de la galería en el HTML
   const galleryGrid = document.getElementById('gallery-grid');
-
-  // Si no existe el contenedor, paramos
   if (!galleryGrid) return;
 
-  // Convertimos cada obra en una tarjeta HTML y las unimos
-  const cardsHTML = artworks.map(createArtworkCard).join('');
+  galleryGrid.innerHTML = artworks.map(createArtworkItem).join('');
 
-  // Las insertamos en la página
-  galleryGrid.innerHTML = cardsHTML;
+  // Activa las animaciones de scroll y el lightbox
+  initScrollAnimations();
+  initLightbox();
+}
+
+// ============================
+// ANIMACIÓN DE SCROLL
+// Usa IntersectionObserver: cuando una obra entra en pantalla,
+// le agrega la clase .visible que dispara la transición CSS.
+// ============================
+function initScrollAnimations() {
+  const items = document.querySelectorAll('.artwork-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Una vez visible no necesitamos seguir observándola
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15 // se activa cuando el 15% del elemento es visible
+  });
+
+  items.forEach(item => observer.observe(item));
+}
+
+// ============================
+// LIGHTBOX
+// Al hacer click en una imagen, se muestra ampliada centrada en pantalla.
+// Se cierra con el botón X o haciendo click fuera de la imagen.
+// ============================
+function initLightbox() {
+  const lightbox   = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn   = document.querySelector('.lightbox-close');
+
+  if (!lightbox) return;
+
+  // Abrir lightbox al hacer click en cualquier imagen de obra
+  document.querySelectorAll('.artwork-img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.getAttribute('data-src');
+      lightboxImg.alt = img.getAttribute('data-alt');
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden'; // evita scroll mientras está abierto
+    });
+  });
+
+  // Cerrar con el botón X
+  closeBtn.addEventListener('click', closeLightbox);
+
+  // Cerrar al hacer click en el fondo oscuro (fuera de la imagen)
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Cerrar con la tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = ''; // restaura el scroll
+  }
 }
 
 // ============================
 // INICIALIZACIÓN
-// Cuando la página termina de cargar, ejecutamos renderGallery.
 // ============================
 document.addEventListener('DOMContentLoaded', renderGallery);
