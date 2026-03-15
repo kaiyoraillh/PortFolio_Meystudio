@@ -413,8 +413,7 @@ body {
 
 /* Columna izquierda: foto */
 .about-image-col {
-  position: sticky;
-  top: 88px; /* se queda fija mientras scrolleás el texto */
+  margin-top: -24px; /* sube la imagen levemente */
 }
 
 .about-photo {
