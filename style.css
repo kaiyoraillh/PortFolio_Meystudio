@@ -13,39 +13,13 @@
   --space-section: 120px;
 }
 
-/* MODO OSCURO: sobreescribe las variables cuando el body tiene .dark-mode */
-body.dark-mode {
-  --color-bg: #0f0f0f;
-  --color-text: #ebebeb;
-  --color-text-muted: #666666;
-  --color-border: #2a2a2a;
-  --color-input-bg: #1a1a1a;
-}
-
-/* Textos con color hardcodeado que también deben cambiar */
-body.dark-mode .about-text {
-  color: #cccccc;
-}
-
-/* Nav translúcido en dark mode */
-body.dark-mode .nav--scrolled {
-  background-color: rgba(15, 15, 15, 0.85);
-}
-
-/* Botón dark mode en el nav */
-.dark-mode-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  padding: 4px;
-  transition: opacity 0.2s;
-  margin-left: 16px;
-}
-
-.dark-mode-btn:hover {
-  opacity: 0.5;
+/* Nombre del artista en el lado derecho del nav */
+.nav-artist {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* ============================
