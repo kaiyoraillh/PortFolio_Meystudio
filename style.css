@@ -77,16 +77,31 @@ body {
   font-size: 14px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: opacity 0.2s;
+
+  /* La línea se construye con ::after, necesitamos position relative */
+  position: relative;
+  padding-bottom: 2px;
 }
 
-.nav-links a:hover {
-  opacity: 0.4;
+/* Línea debajo del link: empieza con ancho 0 y crece al hacer hover */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: width 0.3s ease;
 }
 
-/* Link activo: página en la que estás actualmente */
-.nav-links a.active {
-  opacity: 0.4;
+.nav-links a:hover::after {
+  width: 100%; /* la línea se expande de izquierda a derecha */
+}
+
+/* Link activo: la línea aparece siempre visible */
+.nav-links a.active::after {
+  width: 100%;
 }
 
 /* ============================
