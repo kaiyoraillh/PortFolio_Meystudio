@@ -17,7 +17,7 @@ const NAV_HTML = `
 
 const FOOTER_HTML = `
   <footer class="footer">
-    <p>© 2026 Meyzine — Mariano Yoraillh</p>
+    <p>© 2026 Portfolio — Mariano Yoraillh</p>
   </footer>
 `;
 
