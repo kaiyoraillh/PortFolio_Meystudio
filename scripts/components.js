@@ -6,7 +6,7 @@
 
 const NAV_HTML = `
   <nav class="nav">
-    <a href="/index.html" class="nav-logo">MEYSTUDIO</a>
+    <a href="/index.html" class="nav-logo">Inicio</a>
     <ul class="nav-links">
       <li><a href="/obras.html" data-page="obras.html">Portfolio</a></li>
       <li><a href="/about.html" data-page="about.html">Sobre mi</a></li>
