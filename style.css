@@ -285,7 +285,7 @@ body {
 .artwork-info {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
 }
 
 .artwork-number {
