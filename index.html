@@ -18,31 +18,20 @@
     <p class="hero-artist">Mariano Yoraillh</p>
   </section>
 
-  <!-- FORMULARIO DE CONTACTO -->
+  <!-- SUSCRIPCIÓN MEYZINE -->
   <section class="form-section">
-    <h2 class="page-title">CONTACTO</h2>
+    <h2 class="meyzine-title">MEYZINE</h2>
+    <p class="meyzine-subtitle">DEJA TU EMAIL Y QUIZÁ RECIBAS UN MEYZINE</p>
 
     <form id="contact-form" class="contact-form" novalidate>
 
-      <div class="form-group">
-        <label for="name" class="form-label">Nombre</label>
-        <input type="text" id="name" name="name" class="form-input" placeholder="Tu nombre" required />
-      </div>
-
-      <div class="form-group">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" id="email" name="email" class="form-input" placeholder="tu@email.com" required />
-      </div>
-
-      <div class="form-group">
-        <label for="message" class="form-label">Mensaje</label>
-        <textarea id="message" name="message" class="form-input form-textarea" placeholder="Tu mensaje..." required></textarea>
+      <div class="newsletter-row">
+        <input type="email" id="email" name="email" class="newsletter-input" placeholder="tu@email.com" required />
+        <button type="submit" class="form-button">Enviar</button>
       </div>
 
       <!-- Mensaje de respuesta (éxito o error) -->
       <p id="form-status" class="form-status" aria-live="polite"></p>
-
-      <button type="submit" class="form-button">Enviar</button>
 
     </form>
   </section>

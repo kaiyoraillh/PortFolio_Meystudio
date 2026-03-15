@@ -280,73 +280,82 @@ body {
 }
 
 /* ============================
-   FORMULARIO DE CONTACTO
+   SECCIÓN MEYZINE (newsletter)
    ============================ */
 .form-section {
   padding: var(--space-section) 60px;
   border-top: 1px solid var(--color-border);
+  text-align: center; /* centra todo el contenido */
 }
 
-.contact-form {
-  max-width: 560px; /* ancho cómodo para leer y escribir */
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+/* Título MEYZINE: más pequeño que .page-title pero grande e impactante */
+.meyzine-title {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-label {
-  font-size: 11px;
+/* Subtítulo descriptivo */
+.meyzine-subtitle {
+  font-size: 13px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-muted);
+  margin-bottom: 48px;
 }
 
-.form-input {
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-border);
-  padding: 10px 0;
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Input y botón en la misma fila */
+.newsletter-row {
+  display: flex;
+  gap: 0; /* sin espacio: el borde los une visualmente */
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Input de email: caja clara con borde visible */
+.newsletter-input {
+  flex: 1; /* ocupa todo el espacio disponible */
+  background: #f5f5f5;
+  border: 1px solid var(--color-border);
+  border-right: none; /* el botón toca el input sin doble borde */
+  padding: 14px 20px;
   font-family: var(--font-main);
-  font-size: 17px;
+  font-size: 15px;
   color: var(--color-text);
   outline: none;
   transition: border-color 0.2s;
-  width: 100%;
 }
 
-.form-input:focus {
-  border-bottom-color: var(--color-text); /* línea se vuelve negra al enfocar */
+.newsletter-input:focus {
+  border-color: var(--color-text);
 }
 
-.form-input::placeholder {
+.newsletter-input::placeholder {
   color: var(--color-text-muted);
 }
 
-/* El textarea tiene altura fija y sin resize horizontal */
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-/* Botón enviar: estilo minimalista acorde al sitio */
+/* Botón enviar */
 .form-button {
-  align-self: flex-start; /* no ocupa todo el ancho */
   background: var(--color-text);
   color: var(--color-bg);
-  border: none;
-  padding: 14px 40px;
+  border: 1px solid var(--color-text);
+  padding: 14px 32px;
   font-family: var(--font-main);
   font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 .form-button:hover {
@@ -361,7 +370,7 @@ body {
 /* Mensaje de estado: éxito o error */
 .form-status {
   font-size: 14px;
-  min-height: 20px; /* evita saltos de layout */
+  min-height: 20px;
 }
 
 .form-status--success {
@@ -372,11 +381,24 @@ body {
   color: #cc0000;
 }
 
-/* Responsive: reduce padding en mobile */
+/* Responsive: en mobile se apilan input y botón */
 @media (max-width: 768px) {
   .form-section {
     padding-left: 24px;
     padding-right: 24px;
+  }
+
+  .newsletter-row {
+    flex-direction: column;
+  }
+
+  .newsletter-input {
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+  }
+
+  .form-button {
+    width: 100%;
   }
 }
 
