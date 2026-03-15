@@ -135,6 +135,20 @@ body {
 }
 
 /* ============================
+   TÍTULO PRINCIPAL DE PÁGINA
+   Mismo estilo que .hero-title ("HOLA!").
+   Se usa en los h2 de Portfolio, Sobre mí y Contacto.
+   ============================ */
+.page-title {
+  font-size: clamp(72px, 12vw, 160px);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+}
+
+/* ============================
    TÍTULOS DE SECCIÓN
    ============================ */
 .section-title {
