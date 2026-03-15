@@ -541,8 +541,8 @@ body {
   }
 
   .about-photo {
-    max-width: 260px;
-    margin-left: 0; /* alineada a la izquierda en mobile */
+    max-width: 160px;
+    margin-left: 0;
   }
 }
 
