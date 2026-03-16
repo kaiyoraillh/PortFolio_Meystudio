@@ -189,14 +189,14 @@ body {
    Primera sección que ve el usuario.
    ============================ */
 .hero {
-  padding-top: 180px; /* espacio para que no tape la nav fija */
-  padding-bottom: 40px;
+  padding-top: 160px;
+  padding-bottom: 80px;
   padding-left: 60px;
   padding-right: 60px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* ancla el contenido abajo para look editorial */
 }
 
 .hero-label {
@@ -209,23 +209,13 @@ body {
 
 .hero-title {
   font-family: var(--font-title);
-  font-size: clamp(120px, 22vw, 300px); /* tamaño flexible según pantalla */
+  font-size: clamp(100px, 20vw, 280px);
   font-weight: 700;
-  line-height: 0.88;
-  letter-spacing: -0.04em;
-  margin-bottom: 32px;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  margin-bottom: 48px;
 }
 
-/* Línea decorativa rosa debajo del HOLA! */
-.hero-title::after {
-  content: '';
-  display: block;
-  width: 48px;
-  height: 3px;
-  background: var(--color-accent);
-  margin-top: 28px;
-  border-radius: 2px;
-}
 
 /* Cada letra del título animada individualmente */
 .hero-title .letter {
@@ -262,10 +252,9 @@ body {
    ============================ */
 .hero-columns {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
-  margin-top: 60px;
+  align-items: flex-end; /* alinea video y texto por abajo — más editorial */
+  justify-content: flex-start;
+  gap: 64px;
 }
 
 /* Columna izquierda: video */
@@ -274,49 +263,72 @@ body {
 }
 
 .hero-video {
-  width: 280px;
+  width: 240px;
   aspect-ratio: 9 / 16;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 2px;
   display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.6s ease, filter 0.6s ease;
 }
 
 .hero-video:hover {
-  transform: scale(1.03);
-  filter: brightness(1.08);
+  transform: scale(1.04);
+  filter: brightness(1.06);
 }
 
-/* Columna derecha: texto */
+/* Columna derecha: texto editorial con jerarquía dramática */
 .hero-col-text {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0;
+  padding-bottom: 8px; /* alinea la base del texto con el video */
 }
 
-/* Cada línea de texto: grande y animada */
+/* Base compartida */
 .hero-info {
-  font-size: clamp(22px, 3vw, 42px);
-  font-weight: 300;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
   text-transform: uppercase;
   opacity: 0;
-  animation: heroFadeIn 0.8s ease forwards;
+  animation: heroFadeIn 0.9s ease forwards;
 }
 
-/* Delays escalonados para que aparezcan una tras otra */
-.hero-info--1 { animation-delay: 0.5s; }
-.hero-info--2 { animation-delay: 0.75s; }
-.hero-info--3 { animation-delay: 1s; }
+/* Nombre del artista: grande y dominante */
+.hero-info--1 {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4.5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  animation-delay: 0.5s;
+}
+
+/* Disciplina: pequeño, ligero, tracking amplio */
+.hero-info--2 {
+  font-family: var(--font-main);
+  font-size: clamp(11px, 1.1vw, 14px);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  line-height: 1;
+  color: var(--color-text-muted);
+  margin-bottom: 10px;
+  animation-delay: 0.75s;
+}
+
+/* Año: acento rosa, label */
+.hero-info--3 {
+  font-family: var(--font-main);
+  font-size: clamp(10px, 1vw, 12px);
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  line-height: 1;
+  color: var(--color-accent);
+  animation-delay: 1s;
+}
 
 @keyframes heroFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Mobile: columnas se apilan */
@@ -328,7 +340,11 @@ body {
   }
 
   .hero-video {
-    width: 75vw;
+    width: 72vw;
+  }
+
+  .hero-info--1 {
+    font-size: clamp(28px, 8vw, 52px);
   }
 }
 
@@ -377,16 +393,16 @@ body {
 .artwork-item {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* texto | imagen, mitad y mitad */
+  grid-template-columns: 2fr 3fr; /* texto | imagen — más espacio para la imagen */
   align-items: center;
-  gap: 80px;
+  gap: 60px;
   border-bottom: 1px solid var(--color-border);
-  padding: 80px 0;
+  padding: 100px 0;
 
-  /* Estado inicial para la animación de scroll: invisible y desplazado */
+  /* Estado inicial para la animación de scroll */
   opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* Cuando el IntersectionObserver detecta que es visible, activa la animación */
@@ -399,13 +415,17 @@ body {
 .artwork-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .artwork-number {
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--color-text-muted);
+  font-family: var(--font-main);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
 }
 
 .artwork-name {
@@ -579,10 +599,11 @@ body {
 }
 
 .about-text {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333333;
-  margin-bottom: 1em;
+  font-size: 17px;
+  line-height: 1.9;
+  color: #2a2a2a;
+  margin-bottom: 1.4em;
+  font-weight: 300;
 }
 
 /* Responsive: en mobile la foto va arriba del texto */
@@ -635,9 +656,11 @@ body {
 /* Valor de contacto */
 .contact-value {
   font-size: 17px;
+  font-weight: 300;
   color: var(--color-text);
   text-decoration: none;
   line-height: 1.5;
+  transition: color 0.3s ease;
 }
 
 .contact-value:hover {
@@ -791,11 +814,16 @@ body {
    FOOTER
    ============================ */
 .footer {
-  padding: 40px 60px;
+  padding: 48px 60px;
   border-top: 1px solid var(--color-border);
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
-  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* ============================

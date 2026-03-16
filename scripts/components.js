@@ -18,7 +18,8 @@ const NAV_HTML = `
 
 const FOOTER_HTML = `
   <footer class="footer">
-    <p>© 2026 Portfolio — Mariano Yoraillh</p>
+    <span>© 2026 Mariano Yoraillh</span>
+    <span>Buenos Aires, Argentina</span>
   </footer>
 `;
 
