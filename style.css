@@ -20,7 +20,7 @@
 .nav-artist {
   font-size: 13px;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(26, 26, 26, 0.6);
   text-transform: uppercase;
   white-space: nowrap;
   margin-left: auto;
@@ -35,7 +35,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   transition: width 0.3s ease;
 }
 
@@ -130,7 +130,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffffff;
+  color: #1a1a1a;
   position: relative;
   padding-bottom: 2px;
 }
@@ -142,7 +142,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   transition: width 0.3s ease;
 }
 
@@ -158,17 +158,17 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #ffffff;
+  color: #1a1a1a;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   position: relative;
   padding-bottom: 3px;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-/* Línea blanca debajo del link */
+/* Línea oscura debajo del link */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -176,22 +176,22 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  opacity: 0.7;
+  color: #ffffff;
 }
 
 .nav-links a:hover::after {
   width: 100%;
-  opacity: 1;
+  background-color: #ffffff;
 }
 
-/* Link activo: línea blanca siempre visible */
+/* Link activo */
 .nav-links a.active {
-  opacity: 1;
+  color: #1a1a1a;
 }
 
 .nav-links a.active::after {
