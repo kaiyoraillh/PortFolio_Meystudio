@@ -9,11 +9,11 @@
   --color-text-muted: #888888;
   --color-border: #e8e8e8;
   --color-input-bg: #f5f5f5;
-  --color-accent: #FF4DA6;        /* rosa moderno — acento principal */
-  --color-accent-soft: #FFEEF5;   /* rosa suave — highlights */
+  --color-accent: #FF4DA6;
+  --color-accent-soft: #FFEEF5;
   --font-main: 'Inter', sans-serif;
   --font-title: 'Space Grotesk', sans-serif;
-  --space-section: 120px;
+  --space-section: 140px;   /* más aire entre secciones */
 }
 
 /* Nombre del artista en el lado derecho del nav */
@@ -74,18 +74,39 @@ body {
   justify-content: flex-start;
   align-items: center;
   gap: 40px;
-  padding: 32px 60px;
+  padding: 28px 60px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background-color: var(--color-bg);
   z-index: 100;
-  border-bottom: 1px solid var(--color-border);
 
-  /* El navbar aparece desde arriba con un fade al cargar la página */
+  /* Sin border-bottom estático — se reemplaza por la línea animada ::after */
   animation: navReveal 0.8s ease forwards;
-  transition: padding 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+  transition: padding 0.4s ease, background-color 0.4s ease;
+}
+
+/* Línea inferior del nav: se expande de izquierda a derecha al cargar */
+.nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-border);
+  animation: navLineExpand 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: 0.7s; /* empieza cuando el nav ya bajó */
+}
+
+@keyframes navLineExpand {
+  to { width: 100%; }
+}
+
+/* Al hacer scroll: la línea se vuelve levemente más visible */
+.nav--scrolled::after {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 /* Al cargar: el nav baja suavemente desde arriba */
@@ -100,14 +121,13 @@ body {
   }
 }
 
-/* Al hacer scroll: el fondo se vuelve ligeramente translúcido con blur */
+/* Al hacer scroll: fondo translúcido con blur */
 .nav--scrolled {
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-color: transparent;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
 
 .nav-logo {
@@ -252,9 +272,13 @@ body {
    ============================ */
 .hero-columns {
   display: flex;
-  align-items: flex-end; /* alinea video y texto por abajo — más editorial */
+  align-items: flex-end;
   justify-content: flex-start;
   gap: 64px;
+
+  /* Línea editorial entre el título y el bloque info+video */
+  border-top: 1px solid var(--color-border);
+  padding-top: 40px;
 }
 
 /* Columna izquierda: video */
@@ -315,14 +339,14 @@ body {
   animation-delay: 0.75s;
 }
 
-/* Año: acento rosa, label */
+/* Año: label gris */
 .hero-info--3 {
   font-family: var(--font-main);
   font-size: clamp(10px, 1vw, 12px);
   font-weight: 500;
   letter-spacing: 0.3em;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-text-muted);
   animation-delay: 1s;
 }
 
@@ -350,7 +374,6 @@ body {
 
 /* ============================
    TÍTULO PRINCIPAL DE PÁGINA
-   Mismo estilo que .hero-title ("HOLA!").
    Se usa en los h2 de Portfolio, Sobre mí y Contacto.
    ============================ */
 .page-title {
@@ -360,8 +383,19 @@ body {
   line-height: 0.88;
   letter-spacing: -0.04em;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   white-space: nowrap;
+}
+
+/* Línea editorial debajo del título de página */
+.page-title::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin-top: 40px;
+  margin-bottom: 60px;
 }
 
 /* ============================
@@ -841,23 +875,51 @@ body {
   transform: translateY(0);
 }
 
-/* Artwork: overlay rosa suave al hacer hover */
+/* Artwork: overlay oscuro + título al hacer hover */
 .artwork-visual {
   position: relative;
+  overflow: hidden;
 }
 
+/* Overlay oscuro */
 .artwork-visual::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--color-accent-soft);
+  background: rgba(0, 0, 0, 0.55);
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s ease;
   pointer-events: none;
 }
 
+/* Título que aparece sobre la imagen */
+.artwork-visual::before {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
+  font-family: var(--font-title);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2;
+  pointer-events: none;
+  line-height: 1.1;
+}
+
 .artwork-item:hover .artwork-visual::after {
-  opacity: 0.35;
+  opacity: 1;
+}
+
+.artwork-item:hover .artwork-visual::before {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================

@@ -154,7 +154,7 @@ function createArtworkItem(artwork, index) {
       ${infoSection}
 
       <!-- LADO DERECHO: imagen clickeable -->
-      <div class="artwork-visual">
+      <div class="artwork-visual" data-title="${artwork.name}">
         <img
           src="${artwork.image}"
           alt="${artwork.name}"
