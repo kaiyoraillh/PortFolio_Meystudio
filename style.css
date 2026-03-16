@@ -19,13 +19,15 @@
 /* Nombre del artista en el lado derecho del nav */
 .nav-artist {
   font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.08em;
-  color: rgba(26, 26, 26, 0.6);
+  color: #1a1a1a;
   text-transform: uppercase;
   white-space: nowrap;
   margin-left: auto;
   position: relative;
   padding-bottom: 2px;
+  transition: color 0.3s ease;
 }
 
 .nav-artist::after {
@@ -35,8 +37,12 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
   transition: width 0.3s ease;
+}
+
+.nav-artist:hover {
+  color: #ffffff;
 }
 
 .nav-artist:hover::after {
@@ -126,13 +132,14 @@ body {
 
 .nav-logo {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   color: #1a1a1a;
   position: relative;
   padding-bottom: 2px;
+  transition: color 0.3s ease;
 }
 
 .nav-logo::after {
@@ -142,8 +149,12 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #1a1a1a;
+  background-color: #ffffff;
   transition: width 0.3s ease;
+}
+
+.nav-logo:hover {
+  color: #ffffff;
 }
 
 .nav-logo:hover::after {
@@ -160,7 +171,7 @@ body {
   text-decoration: none;
   color: #1a1a1a;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   position: relative;
