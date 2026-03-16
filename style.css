@@ -236,6 +236,52 @@ body {
   to { height: 100%; }
 }
 
+/* ============================
+   PARTÍCULAS ROSADAS
+   Caen lentamente en el lado izquierdo del hero.
+   ============================ */
+.hero-particles {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35%;      /* solo en la franja izquierda */
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  top: -10px;
+  border-radius: 50%;
+  background-color: #FF4DA6;
+  animation: particleFall linear infinite;
+}
+
+@keyframes particleFall {
+  0% {
+    transform: translateY(-10px) translateX(0px);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1; /* fade in rápido */
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) translateX(8px);
+    opacity: 0;
+  }
+}
+
+/* Asegura que el contenido del hero quede sobre las partículas */
+.hero-row {
+  position: relative;
+  z-index: 1;
+}
+
 /* Fila: título a la izquierda, video a la derecha */
 .hero-row {
   display: flex;
@@ -312,8 +358,8 @@ body {
 }
 
 .hero-video {
-  height: 55vh;           /* se ajusta al alto disponible */
-  width: auto;            /* ancho automático según proporción 9/16 */
+  height: 72vh;
+  width: auto;
   aspect-ratio: 9 / 16;
   object-fit: cover;
   border-radius: 2px;
