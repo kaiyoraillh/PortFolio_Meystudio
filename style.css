@@ -20,7 +20,7 @@
 .nav-artist {
   font-size: 13px;
   letter-spacing: 0.08em;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.75);
   text-transform: uppercase;
   white-space: nowrap;
   margin-left: auto;
@@ -35,7 +35,7 @@
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-text);
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -81,16 +81,14 @@ body {
   right: 0;
   z-index: 100;
 
-  /* Fondo rosa muy suave */
-  background-color: rgba(255, 238, 245, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Fondo rosa sólido */
+  background-color: var(--color-accent);
 
   animation: navReveal 0.8s ease forwards;
   transition: padding 0.4s ease, background-color 0.4s ease;
 }
 
-/* Línea rosa inferior: se expande al cargar */
+/* Línea inferior rosa oscura: se expande al cargar */
 .nav::after {
   content: '';
   position: absolute;
@@ -98,7 +96,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: rgba(255, 77, 166, 0.3);
+  background-color: rgba(0, 0, 0, 0.18);
   animation: navLineExpand 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   animation-delay: 0.7s;
 }
@@ -119,15 +117,11 @@ body {
   }
 }
 
-/* Al hacer scroll: rosa un poco más saturado y línea más visible */
+/* Al hacer scroll: se oscurece levemente */
 .nav--scrolled {
-  background-color: rgba(255, 232, 242, 0.95);
+  background-color: #e63d92;
   padding-top: 18px;
   padding-bottom: 18px;
-}
-
-.nav--scrolled::after {
-  background-color: rgba(255, 77, 166, 0.5);
 }
 
 .nav-logo {
@@ -136,7 +130,7 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--color-text);
+  color: #ffffff;
   position: relative;
   padding-bottom: 2px;
 }
@@ -148,7 +142,7 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-text);
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -164,17 +158,17 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--color-text);
+  color: #ffffff;
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   position: relative;
   padding-bottom: 3px;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-/* Línea debajo del link */
+/* Línea blanca debajo del link */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -182,26 +176,26 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-accent);
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--color-accent);
+  opacity: 0.7;
 }
 
 .nav-links a:hover::after {
   width: 100%;
+  opacity: 1;
 }
 
-/* Link activo: línea rosa siempre visible */
+/* Link activo: línea blanca siempre visible */
 .nav-links a.active {
-  color: var(--color-accent);
+  opacity: 1;
 }
 
 .nav-links a.active::after {
   width: 100%;
-  background-color: var(--color-accent);
 }
 
 /* ============================
@@ -216,7 +210,31 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* ancla el contenido abajo para look editorial */
+  justify-content: flex-end;
+  position: relative; /* necesario para la línea decorativa */
+}
+
+/* Línea vertical rosa que se dibuja hacia abajo al cargar */
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 28px;       /* margen izquierdo, fuera del padding del texto */
+  top: 0;
+  width: 1px;
+  height: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--color-accent) 20%,
+    var(--color-accent) 80%,
+    transparent 100%
+  );
+  animation: verticalLineDraw 2s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes verticalLineDraw {
+  to { height: 100%; }
 }
 
 .hero-label {
