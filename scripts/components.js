@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', injectComponents);
 // ============================
 function initSectionFadeIn() {
   const sections = document.querySelectorAll(
-    '.form-section, .about-section, .contact-section, .gallery-section'
+    '.form-section, .about-section, .contact-section'
   );
 
   sections.forEach(el => el.classList.add('section-fade'));
