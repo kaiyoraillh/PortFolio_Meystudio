@@ -875,51 +875,10 @@ body {
   transform: translateY(0);
 }
 
-/* Artwork: overlay oscuro + título al hacer hover */
+/* Artwork: solo zoom suave al hacer hover */
 .artwork-visual {
   position: relative;
   overflow: hidden;
-}
-
-/* Overlay oscuro */
-.artwork-visual::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-/* Título que aparece sobre la imagen */
-.artwork-visual::before {
-  content: attr(data-title);
-  position: absolute;
-  bottom: 28px;
-  left: 28px;
-  right: 28px;
-  font-family: var(--font-title);
-  font-size: clamp(16px, 2vw, 22px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: #ffffff;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  z-index: 2;
-  pointer-events: none;
-  line-height: 1.1;
-}
-
-.artwork-item:hover .artwork-visual::after {
-  opacity: 1;
-}
-
-.artwork-item:hover .artwork-visual::before {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* ============================
