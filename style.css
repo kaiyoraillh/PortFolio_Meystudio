@@ -79,15 +79,18 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background-color: var(--color-bg);
   z-index: 100;
 
-  /* Sin border-bottom estático — se reemplaza por la línea animada ::after */
+  /* Fondo rosa muy suave */
+  background-color: rgba(255, 238, 245, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
   animation: navReveal 0.8s ease forwards;
   transition: padding 0.4s ease, background-color 0.4s ease;
 }
 
-/* Línea inferior del nav: se expande de izquierda a derecha al cargar */
+/* Línea rosa inferior: se expande al cargar */
 .nav::after {
   content: '';
   position: absolute;
@@ -95,21 +98,16 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-border);
+  background-color: rgba(255, 77, 166, 0.3);
   animation: navLineExpand 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  animation-delay: 0.7s; /* empieza cuando el nav ya bajó */
+  animation-delay: 0.7s;
 }
 
 @keyframes navLineExpand {
   to { width: 100%; }
 }
 
-/* Al hacer scroll: la línea se vuelve levemente más visible */
-.nav--scrolled::after {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
-/* Al cargar: el nav baja suavemente desde arriba */
+/* Al cargar: el nav baja suavemente */
 @keyframes navReveal {
   from {
     opacity: 0;
@@ -121,13 +119,15 @@ body {
   }
 }
 
-/* Al hacer scroll: fondo translúcido con blur */
+/* Al hacer scroll: rosa un poco más saturado y línea más visible */
 .nav--scrolled {
-  background-color: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background-color: rgba(255, 232, 242, 0.95);
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+.nav--scrolled::after {
+  background-color: rgba(255, 77, 166, 0.5);
 }
 
 .nav-logo {
