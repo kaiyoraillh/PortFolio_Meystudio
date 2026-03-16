@@ -71,20 +71,5 @@
   <script src="scripts/components.js"></script>
   <script src="scripts/contact-form.js"></script>
 
-  <script>
-    // Animación letra por letra del título HOLA!
-    document.addEventListener('DOMContentLoaded', () => {
-      const title = document.querySelector('.hero-title');
-      if (!title) return;
-
-      const letters = title.textContent.split('');
-      title.innerHTML = letters
-        .map((char, i) =>
-          // Cada letra en un span con delay escalonado de 0.1s
-          `<span class="letter" style="animation-delay: ${i * 0.1}s">${char}</span>`
-        )
-        .join('');
-    });
-  </script>
 </body>
 </html>

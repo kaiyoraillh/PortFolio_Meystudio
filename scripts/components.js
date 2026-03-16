@@ -53,7 +53,29 @@ function highlightActiveLink() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', injectComponents);
+document.addEventListener('DOMContentLoaded', () => {
+  injectComponents();
+  initLetterAnimation();
+});
+
+// ============================
+// ANIMACIÓN LETRA POR LETRA
+// Aplica la animación a .hero-title y .page-title en todas las páginas.
+// ============================
+function initLetterAnimation() {
+  const targets = document.querySelectorAll('.hero-title, .page-title');
+
+  targets.forEach(title => {
+    const letters = title.textContent.split('');
+    title.innerHTML = letters
+      .map((char, i) =>
+        char === ' '
+          ? `<span class="letter" style="display:inline;">&nbsp;</span>`
+          : `<span class="letter" style="animation-delay: ${i * 0.07}s">${char}</span>`
+      )
+      .join('');
+  });
+}
 
 // ============================
 // FADE-IN DE SECCIONES AL HACER SCROLL
