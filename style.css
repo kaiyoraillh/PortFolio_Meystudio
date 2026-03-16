@@ -9,8 +9,10 @@
   --color-text-muted: #888888;
   --color-border: #e8e8e8;
   --color-input-bg: #f5f5f5;
-  --font-main: 'Inter', sans-serif;         /* cuerpo y nav */
-  --font-title: 'Space Grotesk', sans-serif; /* títulos grandes */
+  --color-accent: #FF4DA6;        /* rosa moderno — acento principal */
+  --color-accent-soft: #FFEEF5;   /* rosa suave — highlights */
+  --font-main: 'Inter', sans-serif;
+  --font-title: 'Space Grotesk', sans-serif;
   --space-section: 120px;
 }
 
@@ -143,16 +145,16 @@ body {
 .nav-links a {
   text-decoration: none;
   color: var(--color-text);
-  font-size: 14px;
-  letter-spacing: 0.08em;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-
-  /* La línea se construye con ::after, necesitamos position relative */
   position: relative;
-  padding-bottom: 2px;
+  padding-bottom: 3px;
+  transition: color 0.3s ease;
 }
 
-/* Línea debajo del link: empieza con ancho 0 y crece al hacer hover */
+/* Línea debajo del link */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -160,17 +162,26 @@ body {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: var(--color-text);
+  background-color: var(--color-accent);
   transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
-  width: 100%; /* la línea se expande de izquierda a derecha */
+.nav-links a:hover {
+  color: var(--color-accent);
 }
 
-/* Link activo: la línea aparece siempre visible */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Link activo: línea rosa siempre visible */
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
 .nav-links a.active::after {
   width: 100%;
+  background-color: var(--color-accent);
 }
 
 /* ============================
@@ -203,6 +214,17 @@ body {
   line-height: 0.88;
   letter-spacing: -0.04em;
   margin-bottom: 32px;
+}
+
+/* Línea decorativa rosa debajo del HOLA! */
+.hero-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--color-accent);
+  margin-top: 28px;
+  border-radius: 2px;
 }
 
 /* Cada letra del título animada individualmente */
@@ -619,7 +641,8 @@ body {
 }
 
 .contact-value:hover {
-  opacity: 0.5;
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 /* Contenedor del mapa */
@@ -687,7 +710,7 @@ body {
 }
 
 .newsletter-input:focus {
-  border-color: var(--color-text);
+  border-color: var(--color-accent);
 }
 
 .newsletter-input::placeholder {
@@ -710,7 +733,9 @@ body {
 }
 
 .form-button:hover {
-  opacity: 0.7;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  opacity: 1;
 }
 
 .form-button:disabled {
@@ -771,6 +796,40 @@ body {
   font-size: 13px;
   color: var(--color-text-muted);
   letter-spacing: 0.05em;
+}
+
+/* ============================
+   FADE-IN AL HACER SCROLL
+   El JS agrega .section-visible cuando la sección entra en pantalla.
+   ============================ */
+.section-fade {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.section-fade.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Artwork: overlay rosa suave al hacer hover */
+.artwork-visual {
+  position: relative;
+}
+
+.artwork-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent-soft);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.artwork-item:hover .artwork-visual::after {
+  opacity: 0.35;
 }
 
 /* ============================

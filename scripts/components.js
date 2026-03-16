@@ -55,6 +55,32 @@ function highlightActiveLink() {
 document.addEventListener('DOMContentLoaded', injectComponents);
 
 // ============================
+// FADE-IN DE SECCIONES AL HACER SCROLL
+// Agrega .section-fade a las secciones principales y las activa
+// cuando entran en el viewport con IntersectionObserver.
+// ============================
+function initSectionFadeIn() {
+  const sections = document.querySelectorAll(
+    '.form-section, .about-section, .contact-section, .gallery-section'
+  );
+
+  sections.forEach(el => el.classList.add('section-fade'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  sections.forEach(el => observer.observe(el));
+}
+
+document.addEventListener('DOMContentLoaded', initSectionFadeIn);
+
+// ============================
 // ANIMACIÓN DEL NAVBAR AL HACER SCROLL
 // Agrega la clase .nav--scrolled cuando el usuario baja de la página.
 // ============================
