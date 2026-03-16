@@ -213,28 +213,6 @@ body {
   position: relative;
 }
 
-/* Línea vertical rosa que se dibuja hacia abajo al cargar */
-.hero::before {
-  content: '';
-  position: absolute;
-  left: 28px;
-  top: 0;
-  width: 1px;
-  height: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    var(--color-accent) 20%,
-    var(--color-accent) 80%,
-    transparent 100%
-  );
-  animation: verticalLineDraw 2s ease forwards;
-  animation-delay: 1s;
-}
-
-@keyframes verticalLineDraw {
-  to { height: 100%; }
-}
 
 /* ============================
    PARTÍCULAS ROSADAS
@@ -300,7 +278,7 @@ body {
 
 .hero-title {
   font-family: var(--font-title);
-  font-size: clamp(80px, 17vw, 240px);
+  font-size: clamp(120px, 22vw, 320px);
   font-weight: 700;
   line-height: 0.85;
   letter-spacing: -0.05em;
