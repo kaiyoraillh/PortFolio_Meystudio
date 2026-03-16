@@ -286,6 +286,12 @@ body {
 }
 
 
+/* Último carácter de los títulos grandes en rosa (el punto o !) */
+.hero-title .letter:last-child,
+.page-title .letter:last-child {
+  color: var(--color-accent);
+}
+
 /* Cada letra del título animada individualmente */
 .hero-title .letter {
   display: inline-block;
