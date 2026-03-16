@@ -200,25 +200,24 @@ body {
 
 /* ============================
    HERO
-   Primera sección que ve el usuario.
+   Título y video en la misma fila.
    ============================ */
 .hero {
-  padding-top: 160px;
-  padding-bottom: 80px;
+  padding-top: 140px;
+  padding-bottom: 60px;
   padding-left: 60px;
   padding-right: 60px;
-  min-height: 100vh;
+  min-height: auto; /* ya no ocupa toda la pantalla */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  position: relative; /* necesario para la línea decorativa */
+  align-items: center;
+  position: relative;
 }
 
 /* Línea vertical rosa que se dibuja hacia abajo al cargar */
 .hero::before {
   content: '';
   position: absolute;
-  left: 28px;       /* margen izquierdo, fuera del padding del texto */
+  left: 28px;
   top: 0;
   width: 1px;
   height: 0;
@@ -237,6 +236,14 @@ body {
   to { height: 100%; }
 }
 
+/* Fila: título a la izquierda, video a la derecha */
+.hero-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+}
+
 .hero-label {
   font-size: 13px;
   letter-spacing: 0.15em;
@@ -247,11 +254,11 @@ body {
 
 .hero-title {
   font-family: var(--font-title);
-  font-size: clamp(100px, 20vw, 280px);
+  font-size: clamp(72px, 14vw, 200px);
   font-weight: 700;
   line-height: 0.85;
   letter-spacing: -0.05em;
-  margin-bottom: 48px;
+  flex: 1; /* ocupa el espacio restante junto al video */
 }
 
 
@@ -305,11 +312,12 @@ body {
 }
 
 .hero-video {
-  width: 240px;
+  width: 200px;
   aspect-ratio: 9 / 16;
   object-fit: cover;
   border-radius: 2px;
   display: block;
+  flex-shrink: 0;
   transition: transform 0.6s ease, filter 0.6s ease;
 }
 
@@ -731,9 +739,9 @@ body {
    SECCIÓN MEYZINE (newsletter)
    ============================ */
 .form-section {
-  padding: var(--space-section) 60px;
+  padding: 80px 60px;
   border-top: 1px solid var(--color-border);
-  text-align: center; /* centra todo el contenido */
+  text-align: center;
 }
 
 /* Título MEYZINE: más pequeño que .page-title pero grande e impactante */
@@ -928,8 +936,18 @@ body {
   .hero {
     padding-left: 24px;
     padding-right: 24px;
-    padding-top: 120px;
-    min-height: auto;
+    padding-top: 110px;
+    padding-bottom: 40px;
+  }
+
+  .hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .hero-video {
+    width: 65vw;
   }
 
   /* --- TÍTULO PRINCIPAL DE PÁGINAS INTERNAS ---
