@@ -10,14 +10,14 @@
 const artworks = [
   {
     name: "Yeah Manja",
-    image: "Assets/images/YEAHMAN 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/YEAHMAN_2.png",
     year: "2013",
     dimensions: "220x80",
     description: "Acrylic, ink, laquer and spray paint on wood"
   },
   {
     name: "Si/som dos",
-    image: "Assets/images/SI 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/SI_2.png",
     year: "2013",
     dimensions: "220x160",
     description: "Acrylic, ink, laquer, resin and spray paint on wood"
@@ -25,7 +25,7 @@ const artworks = [
   {
     // OBRA #3 — doble bloque de información
     name: "Quixote",
-    image: "Assets/images/quixote 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/quixote_2.png",
     year: "2020",
     dimensions: "170x80",
     description: "Acrilico, carbonilla, aerosol, marcadores y acuarela sobre papel troquelado",
@@ -37,42 +37,42 @@ const artworks = [
   },
   {
     name: "Halcones y Palomas",
-    image: "Assets/images/HALCONES 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/HALCONES_2.png",
     year: "2016",
     dimensions: "150x150",
     description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "Follow",
-    image: "Assets/images/FOLLOW 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/FOLLOW_2.png",
     year: "2016",
     dimensions: "220x160",
     description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "El Out",
-    image: "Assets/images/EL OUT 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/EL_OUT_2.png",
     year: "2020",
     dimensions: "175x75",
     description: "/Periodo de cuarentena/ Acrylic, ink, laquer, resin plaster and spray paint on wood panel"
   },
   {
     name: "Distant",
-    image: "Assets/images/DISTANT 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/DISTANT_2.png",
     year: "2019",
     dimensions: "140x110",
     description: "Acrylic, ink, laquer, plaster and spray paint on cement place"
   },
   {
     name: "Serie Captcha",
-    image: "Assets/images/CAPTCHA 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/CAPTCHA_2.png",
     year: "04.A0",
     dimensions: "120x150",
     description: "Acrylic, ink and spray paint on wood"
   },
   {
     name: "Cabecera",
-    image: "Assets/images/CABECERA  2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/CABECERA__2.png",
     year: "2022",
     dimensions: "300x120",
     description: "Acrilico, carbonilla, aerosol. Marcadores, enduido sobre 14 lienzos unidos"
@@ -80,7 +80,7 @@ const artworks = [
   {
     // OBRA #10 — doble bloque de información
     name: "R12/El Muelle",
-    image: "Assets/images/BITACORAS 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/BITACORAS_2.png",
     year: "2024-25",
     dimensions: "90x60",
     description: "Acrilico, lapiz negro, aerosol, marcadores, acuarela y laca sobre papel",
@@ -93,21 +93,21 @@ const artworks = [
   },
   {
     name: "Anis",
-    image: "Assets/images/ANIS 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/ANIS_2.png",
     year: "2016",
     dimensions: "120x150",
     description: "Acrylic, ink, laquer and spray paint on wood"
   },
   {
     name: "Mar Propio",
-    image: "Assets/images/MAR PROPIO 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/MAR_PROPIO_2.png",
     year: "2016",
     dimensions: "220x160",
     description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
   },
   {
     name: "Ad Antes",
-    image: "Assets/images/AD ANTES 2.jpg",
+    image: "Assets/images/Fotos PNG Portfolio/AD_ANTES_2.png",
     year: "2019",
     dimensions: "110x85",
     description: "Acrylic, ink, laquer, resin, plaster and spray paint on wood"
